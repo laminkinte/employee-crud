@@ -63,10 +63,9 @@ employee-crud/
     └── functions.php
 ```
 ---
-
 ## Database Configuration
 
-### db.php
+##Xdb.php
 This file establishes a connection to the MySQL database.
 
 ```php
