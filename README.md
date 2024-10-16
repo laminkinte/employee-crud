@@ -13,7 +13,7 @@ Tools & Technologies Used:
 Features:
 - Add Employee: Create new employee entries with validation checks for required fields and uniqueness for email and phone number.
 - Update Employee: Edit existing employee details.
-- **Delete Employee: Remove employee records from the system.
+- Delete Employee: Remove employee records from the system.
 - Employee List: View a list of all employees with search and filter options.
   
 Setup Instructions:
