@@ -74,11 +74,6 @@ employee-crud/
 ```
 
 ---
-
----
-
-
-
 ---
 
 ## Database Configuration
