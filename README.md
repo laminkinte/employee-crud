@@ -47,6 +47,16 @@ CREATE TABLE employees (
     status ENUM('active', 'inactive') NOT NULL
 );
 ```
+This creates a database named `hrm_demo` and a table named `employees` with the following columns:
+- id: Auto-incrementing integer, primary key.
+- name: Employee's name (not nullable).
+- mail: Employee's email (not nullable, must be unique).
+- phone_number: Employee's phone number (optional, must be unique).
+- hire_date: Date of hire (not nullable).
+- job_title: Job title of the employee (not nullable).
+- status: Employment status (can be either 'active' or 'inactive').
+
+
 
  File Structure
 
@@ -62,10 +72,18 @@ employee-crud/
 └── includes/
     └── functions.php
 ```
+
 ---
+
+---
+
+
+
+---
+
 ## Database Configuration
 
-##Xdb.php
+### db.php
 This file establishes a connection to the MySQL database.
 
 ```php
@@ -93,9 +111,9 @@ if ($conn->connect_error) {
 
 ---
 
-Functionality
+## Functionality
 
-1. CRUD Operations
+### 1. **CRUD Operations**
 
 #### functions.php
 This file contains all the functions related to employee operations.
@@ -187,7 +205,7 @@ function deleteEmployee($id) {
 ?>
 ```
 
-2. User Interfaces
+### 2. **User Interfaces**
 
 #### index.php
 This file displays the list of all employees.
