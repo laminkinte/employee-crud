@@ -1,3 +1,0 @@
-composer init
-
-composer validate --strict
