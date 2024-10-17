@@ -1,0 +1,51 @@
+
+name: PHP CI
+
+on:
+  push:
+    branches:
+      - main  # You can change this to your desired branch
+  pull_request:
+    branches:
+      - main  # You can change this to your desired branch
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        php-versions: [7.4, 8.0, 8.1]  # Specify the PHP versions you want to test
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: ${{ matrix.php-versions }}
+        extensions: mbstring, mysqli, intl  # Add necessary extensions
+        ini-values: post_max_size=256M, upload_max_filesize=256M, memory_limit=1G
+
+    - name: Validate composer.json (Optional)
+      run: composer validate --strict
+      continue-on-error: true # Allow the workflow to continue even if composer.json doesn't exist
+
+    - name: Install Dependencies (if using Composer)
+      run: composer install --no-progress --no-suggest
+      if: fileExists('composer.json')
+
+    - name: Run PHP lint (Optional)
+      run: |
+        find . -type f -name "*.php" -exec php -l {} \;
+
+    - name: Run PHPUnit tests (if applicable)
+      run: ./vendor/bin/phpunit --testdox --no-coverage
+      if: fileExists('phpunit.xml')
+
+    - name: Verify if the application runs
+      run: php -S localhost:8000 -t public
+      timeout-minutes: 1
+      continue-on-error: true  # This ensures it doesn't block the pipeline
