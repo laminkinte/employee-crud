@@ -1,0 +1,76 @@
+<form action="create.php" method="POST" class="needs-validation" novalidate>
+    <div class="mb-3">
+        <label for="name" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="name" name="name" required>
+        <div class="invalid-feedback">
+            Please provide a valid name.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="email" class="form-label">Email</label>
+        <input type="email" class="form-control" id="email" name="email" required>
+        <div class="invalid-feedback">
+            Please provide a valid email.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="phone_number" class="form-label">Phone Number</label>
+        <input type="text" class="form-control" id="phone_number" name="phone_number">
+        <div class="invalid-feedback">
+            Please provide a valid phone number.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="hire_date" class="form-label">Hire Date</label>
+        <input type="date" class="form-control" id="hire_date" name="hire_date" required>
+        <div class="invalid-feedback">
+            Please select a valid hire date.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="job_title" class="form-label">Job Title</label>
+        <input type="text" class="form-control" id="job_title" name="job_title" required>
+        <div class="invalid-feedback">
+            Please provide a valid job title.
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label for="status" class="form-label">Status</label>
+        <select class="form-control" id="status" name="status" required>
+            <option value="" selected disabled>Select Status</option>
+            <option value="active">Active</option>
+            <option value="inactive">Inactive</option>
+        </select>
+        <div class="invalid-feedback">
+            Please select a status.
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<script>
+// Example starter JavaScript for disabling form submissions if there are invalid fields
+(function () {
+    'use strict'
+    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+    var forms = document.querySelectorAll('.needs-validation')
+
+    // Loop over them and prevent submission
+    Array.prototype.slice.call(forms)
+        .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+                if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                }
+                form.classList.add('was-validated')
+            }, false)
+        })
+})()
+</script>

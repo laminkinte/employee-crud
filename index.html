@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../assets/bootstrap.min.css" rel="stylesheet">
+    <title>Employee Management</title>
+</head>
+<body>
+    
+    <div class="container">
+        <h1 class="mt-4">Employee List</h1>
+        <a href="create.php" class="btn btn-success mb-2">Add New Employee</a>
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Hire Date</th>
+                    <th>Job Title</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php while($row = $employees->fetch_assoc()): ?>
+                    <tr>
+                        <td><?= $row['id']; ?></td>
+                        <td><?= $row['name']; ?></td>
+                        <td><?= $row['email']; ?></td>
+                        <td><?= $row['phone_number']; ?></td>
+                        <td><?= $row['hire_date']; ?></td>
+                        <td><?= $row['job_title']; ?></td>
+                        <td><?= $row['status']; ?></td>
+                        <td>
+                            <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
+                            <a href="delete.php?id=<?= $row['id']; ?>" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                <?php endwhile; ?>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+
+
+
